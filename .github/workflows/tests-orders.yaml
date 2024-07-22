@@ -1,7 +1,9 @@
 name: tests-orders
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "orders/**"
 
 jobs:
   build:
@@ -11,5 +13,5 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - run: cd orders && npm install && npm run test:ci
