@@ -11,6 +11,10 @@ jest.mock("../nats-wrapper");
 process.env.STRIPE_KEY =
   "sk_test_51O1E3iKYQaPidK9KKs5nmRWOee0ShoePa4cnvNFMDI3fSDu3p3vLacwvJkzyKqvON1DEcr11pa7J5HAVw23Y6Odn00rHYCZhtp";
 
+if (typeof global.structuredClone === "undefined") {
+  global.structuredClone = (value) => JSON.parse(JSON.stringify(value));
+}
+
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = "asdfasdf";
